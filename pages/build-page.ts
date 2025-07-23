@@ -68,6 +68,16 @@ export class BuildPage {
         await this.getPrototypeBuild.click();
     }
 
+    /* Because this automation is designed to work over multiple instances, this method will help direct the automation
+        to different pages. Keeping it basic for now.
+        */
+    async openApplicationPageUnderTest() {
+        await this.clickCurrentBuild();
+    }
+
+    async getBuild1Link() : Locator {
+        return this.getBuild1;
+    }
 
     async assertPageTitle() {
         await expect(this.page).toHaveTitle(this.pageTitle);

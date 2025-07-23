@@ -15,7 +15,7 @@ test.beforeEach(async ({page}) => {
     //await helper.openHomePage();
     buildPage = new BuildPage(page);
     await buildPage.goToBuildPage();
-    await buildPage.clickCurrentBuild();
+    await buildPage.openApplicationPageUnderTest();
     homePage = new HomePage(page);
 });
 
