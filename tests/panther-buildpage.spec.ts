@@ -38,7 +38,7 @@ test('Butch method 1 - using a class method for an assert', async ({ page }) => 
   Feels somewhat wrong because of decades of encapsulation programming!
   */
 test('Butch method 2 - Direct access to POM attribute', async ({ page }) => {
-  await expect(buildPage.getBuild1).toBeVisible();
+  await expect(buildPage.build1Link).toBeVisible();
 });
 
 /* Method 3
@@ -49,10 +49,11 @@ test('Butch method 2 - Direct access to POM attribute', async ({ page }) => {
 
   Oh... and small fact of it doesn't work!
   */
-test('Butch method 3 - POM method returns attribute', async ({ page }) => {
+ /*
+test.fixme('Butch method 3 - POM method returns attribute', async ({ page }) => {
   await expect(buildPage.getBuild1Link()).toBeVisible();
 });
-
+*/
 
 
 

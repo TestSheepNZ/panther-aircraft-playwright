@@ -21,20 +21,19 @@ test.beforeEach(async ({page}) => {
 
 
 test('has title', async ({ page }) => {
- //await expect(page).toHaveTitle(homePage.pageTitle);
-  await homePage.assertPageTitle();
+  await expect(page).toHaveTitle(homePage.pageTitle);
 });
 
 test('documentation link present', async ({ page }) => {
-  await homePage.assertDocumentationLinkVisible();
+  await expect(homePage.getDocumentation).toBeVisible();
 });
 
 test('exercises link present', async ({ page }) => {
-  await homePage.assertExercisesLinkVisible();
+  await expect(homePage.getExercises).toBeVisible();
 });
 
 test('build link present', async ({ page }) => {
-  await homePage.assertBuildsLinkVisible();
+  await expect(homePage.getBuilds).toBeVisible();
 });
 
 

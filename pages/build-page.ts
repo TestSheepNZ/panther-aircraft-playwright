@@ -2,29 +2,29 @@ import { type Locator, type Page, expect } from '@playwright/test';
 
 export class BuildPage {
     readonly page: Page;
-    readonly getDocumentation: Locator;
-    readonly getExercises: Locator;
-    readonly getCurrentBuild: Locator;
-    readonly getBuild1: Locator;
-    readonly getBuild2: Locator;
-    readonly getBuild3: Locator;
-    readonly getBuild4: Locator;
-    readonly getBuild5: Locator;
-    readonly getPrototypeBuild: Locator;
+    readonly documentationButton: Locator;
+    readonly excercisesButton: Locator;
+    readonly currentBuildLink: Locator;
+    readonly build1Link: Locator;
+    readonly build2Link: Locator;
+    readonly build3Link: Locator;
+    readonly build4Link: Locator;
+    readonly build5Link: Locator;
+    readonly prototypeBuildLink: Locator;
     readonly pageTitle: RegExp;
     readonly URL = 'https://testsheepnz.github.io/panther-all-builds.html';
 
     constructor(page: Page) {
         this.page = page;
-        this.getDocumentation = page.getByRole('link', { name: 'Documentation' });
-        this.getExercises = page.getByRole('link', { name: 'Exercises' });
-        this.getCurrentBuild = page.getByAltText('Select current build');
-        this.getBuild1 = page.getByAltText('Select build 1');
-        this.getBuild2 = page.getByAltText('Select build 2');
-        this.getBuild3 = page.getByAltText('Select build 3');
-        this.getBuild4 = page.getByAltText('Select build 4');
-        this.getBuild5 = page.getByAltText('Select build 5');
-        this.getPrototypeBuild = page.getByAltText('Select prototype build');
+        this.documentationButton = page.getByRole('link', { name: 'Documentation' });
+        this.excercisesButton = page.getByRole('link', { name: 'Exercises' });
+        this.currentBuildLink = page.getByAltText('Select current build');
+        this.build1Link = page.getByAltText('Select build 1');
+        this.build2Link = page.getByAltText('Select build 2');
+        this.build3Link = page.getByAltText('Select build 3');
+        this.build4Link = page.getByAltText('Select build 4');
+        this.build5Link = page.getByAltText('Select build 5');
+        this.prototypeBuildLink = page.getByAltText('Select refuelling prototype');
         this.pageTitle = /Panther Build Directory/;
     }
 
@@ -33,50 +33,43 @@ export class BuildPage {
     }
 
     async clickDocumentation() {
-        await this.getDocumentation.click();
+        await this.documentationButton.click();
     }
 
     async clickExercises() {
-        await this.getExercises.click();
+        await this.excercisesButton.click();
     }
     
     async clickCurrentBuild() {
-        await this.getCurrentBuild.click();
+        await this.currentBuildLink.click();
     }
 
     async clickBuild1() {
-        await this.getBuild1.click();
+        await this.build1Link.click();
     }
 
     async clickBuild2() {
-        await this.getBuild2.click();
+        await this.build2Link.click();
     }
 
     async clickBuild3() {
-        await this.getBuild3.click();
+        await this.build3Link.click();
     }
 
     async clickBuild4() {
-        await this.getBuild4.click();
+        await this.build4Link.click();
     }
 
     async clickBuild5() {
-        await this.getBuild1.click();
+        await this.build1Link.click();
     }
 
     async clickPrototypeBuild() {
-        await this.getPrototypeBuild.click();
+        await this.prototypeBuildLink.click();
     }
 
-    /* Because this automation is designed to work over multiple instances, this method will help direct the automation
-        to different pages. Keeping it basic for now.
-        */
-    async openApplicationPageUnderTest() {
-        await this.clickCurrentBuild();
-    }
-
-    async getBuild1Link() : Locator {
-        return this.getBuild1;
+    async getBuild1Link() {
+        return this.build1Link;
     }
 
     async assertPageTitle() {
@@ -84,42 +77,48 @@ export class BuildPage {
     }
 
     async assertDocumentationLinkVisible() {
-        await expect(this.getDocumentation).toBeVisible();
+        await expect(this.documentationButton).toBeVisible();
     }
 
     async assertExercisesLinkVisible() {
-        await expect(this.getExercises).toBeVisible();
+        await expect(this.excercisesButton).toBeVisible();
     }
 
 
     async assertCurrentBuildLinkVisible() {
-        await expect(this.getCurrentBuild).toBeVisible();
+        await expect(this.currentBuildLink).toBeVisible();
     }
 
     async assertBuild1LinkVisible() {
-        await expect(this.getBuild1).toBeVisible();
+        await expect(this.build1Link).toBeVisible();
     }
 
     async assertBuild2LinkVisible() {
-        await expect(this.getBuild2).toBeVisible();
+        await expect(this.build2Link).toBeVisible();
     }
 
     async assertBuild3LinkVisible() {
-        await expect(this.getBuild3).toBeVisible();
+        await expect(this.build3Link).toBeVisible();
     }
 
     async assertBuild4LinkVisible() {
-        await expect(this.getBuild4).toBeVisible();
+        await expect(this.build4Link).toBeVisible();
     }
 
     async assertBuild5LinkVisible() {
-        await expect(this.getBuild5).toBeVisible();
+        await expect(this.build5Link).toBeVisible();
     }
 
     async assertPrototypeBuildLinkVisible() {
-        await expect(this.getPrototypeBuild).toBeVisible();
+        await expect(this.prototypeBuildLink).toBeVisible();
     }
 
+        /* Because this automation is designed to work over multiple instances, this method will help direct the automation
+        to different pages. Keeping it basic for now.
+        */
+    async openApplicationPageUnderTest() {
+        await this.clickCurrentBuild();
+    }
 
 }
 

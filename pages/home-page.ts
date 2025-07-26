@@ -27,13 +27,6 @@ export class HomePage {
         await this.getBuilds.click();
     }
 
-    async assertPageTitle() {
-        await expect(this.page).toHaveTitle(this.pageTitle);
-    }
-
-    async assertDocumentationLinkVisible() {
-        await expect(this.getDocumentation).toBeVisible();
-    }
 
     async assertExercisesLinkVisible() {
         await expect(this.getExercises).toBeVisible();
