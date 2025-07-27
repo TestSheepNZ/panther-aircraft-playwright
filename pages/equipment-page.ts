@@ -33,7 +33,9 @@ export class EquipmentPage {
     }
 
     async setFuel(inputString) {
+        //await this.initialFuelField.clear();
         await this.initialFuelField.click();
+        await this.initialFuelField.fill('');
         await this.initialFuelField.fill(inputString);
     }
 

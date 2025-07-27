@@ -58,3 +58,36 @@ test('Restart takes back to equipment section', async ({ page }) => {
     await expect(equipmentPage.initialFuelField).toBeVisible();
     await expect(equipmentPage.loadButton).toBeVisible();
 });
+
+test('After equipment load, aircraft leg is set to 0', async ({ page }) => {
+    await equipmentPage.loadButton.click();
+    await expect(statusPage.aircraftLegField).toHaveValue('0');
+});
+
+test('After equipment load, aircraft altitude is set to 0', async ({ page }) => {
+    await equipmentPage.loadButton.click();
+    await expect(statusPage.aircraftAltitudeField).toHaveValue('0');
+});
+
+test('After equipment load, fuel used last leg is set to 0', async ({ page }) => {
+    await equipmentPage.loadButton.click();
+    await expect(statusPage.aircraftFuelLastLeg).toHaveValue('0');
+});
+
+test('After entering fuel of 2145kg on equipment page, status page says 2145kg fuel available', async ({ page }) => {
+    const fuelVal = '2145';
+    await equipmentPage.setFuel(fuelVal);
+    await equipmentPage.loadButton.click();
+    await expect(statusPage.aircraftFuelRemainingField).toBeVisible(); 
+    await expect(statusPage.aircraftFuelRemainingField).toHaveValue(fuelVal);
+});
+
+// Tests where we check the data provided
+
+test('Aircraft has an all up weight of 17000 if loaded with 6000kg fuel, 8 missiles, 6 dumb bombs, ext fuel tank', async ({ page }) => {
+    const expectedAllUpWeight = '17000';
+    await equipmentPage.setAircraftEquipment('6000', '8', '6', false, false, true);
+    await equipmentPage.loadButton.click();
+    await expect(statusPage.aircraftWeightField).toBeVisible(); 
+    await expect(statusPage.aircraftWeightField).toHaveValue(expectedAllUpWeight);
+});

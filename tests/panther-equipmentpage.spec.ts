@@ -155,6 +155,12 @@ test('With no ext fuel tank, 3000kg fuel will be accepted once load button selec
     await expect(equipmentPage.loadingEquipmentIndicator).toBeVisible();
 });
 
+test('Entering a decimal point number will be accepted once load button selected', async ({ page }) => {
+    await equipmentPage.setFuel('2888.5');
+    await equipmentPage.loadButton.click();
+    await expect(equipmentPage.loadingEquipmentIndicator).toBeVisible();
+});
+
 test('With no ext fuel tank, 3001kg fuel will generate an error message', async ({ page }) => {
     await equipmentPage.setFuel('3001');
     await equipmentPage.loadButton.click();
@@ -175,4 +181,11 @@ test('With an ext fuel tank, 6001kg fuel will generate an error message', async 
     await equipmentPage.loadButton.click();
     await expect(equipmentPage.errorMessage).toBeVisible();
     await expect(equipmentPage.errorMessage).toHaveText(equipmentPage.errorMessageForFuelWithExtTank);
+});
+
+test('If text is entered into initial fuel, and load selected will generate an error message', async ({ page }) => {
+    await equipmentPage.setFuel('hello');
+    await equipmentPage.loadButton.click();
+    await expect(equipmentPage.errorMessage).toBeVisible();
+    await expect(equipmentPage.errorMessage).toHaveText(equipmentPage.errorMessageForFuelWithoutNoTank);
 });
