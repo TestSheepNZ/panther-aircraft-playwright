@@ -33,8 +33,8 @@ export class EquipmentPage {
 
   async setFuel(inputString) {
     //await this.initialFuelField.clear();
-    await this.initialFuelField.click();
-    await this.initialFuelField.fill("");
+    // await this.initialFuelField.click();
+    // await this.initialFuelField.fill("");
     await this.initialFuelField.fill(inputString);
   }
 
@@ -69,7 +69,7 @@ export class EquipmentPage {
   }
 
   async setDefaultEquipment(fuel) {
-    this.setAircraftEquipment(fuel, 6, 4, false, false, false);
+    await this.setAircraftEquipment(fuel, 6, 4, false, false, false);
   }
 }
 
