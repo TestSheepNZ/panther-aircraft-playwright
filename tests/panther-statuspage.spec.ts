@@ -15,7 +15,7 @@ test.beforeEach(async ({page}) => {
     await buildPage.goToBuildPage();
     await buildPage.openApplicationPageUnderTest();
     equipmentPage = new EquipmentPage(page);
-    equipmentPage.setFuel('1000');
+    await equipmentPage.setFuel('1000');
     statusPage = new StatusPage(page);
 });
 
