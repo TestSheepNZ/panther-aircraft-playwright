@@ -48,22 +48,22 @@ export class EquipmentPage {
     }
 
     async setAircraftEquipment (fuel, numMissiles, numDumbBomb, reconPod, intelliBomb, fuelTank ) {
-        this.setFuel(fuel);
-        this.setMissileNum(numMissiles);
-        this.setDumbBombNum(numDumbBomb);
+        await this.setFuel(fuel);
+        await this.setMissileNum(numMissiles);
+        await this.setDumbBombNum(numDumbBomb);
         if( reconPod ) {
-            this.reconPodCheckbox.check();
+            await this.reconPodCheckbox.check();
         }
         if( intelliBomb ) {
-            this.intelliBombCheckbox.check();
+            await this.intelliBombCheckbox.check();
         }
         if( fuelTank ) {
-            this.fuelTankCheckbox.check();
+            await this.fuelTankCheckbox.check();
         }
     }
 
     async setDefaultEquipment (fuel) {
-        this.setAircraftEquipment( fuel, 6, 4, false, false, false );
+        await this.setAircraftEquipment( fuel, 6, 4, false, false, false );
     }
 
 }
